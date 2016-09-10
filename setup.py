@@ -144,11 +144,15 @@ class MyBuildExt(build_ext):
                     ("SQLITE_ENABLE_FTS4", "1"),
                     ("SQLITE_ENABLE_RTREE", "1")]
             ext.sources.append("sqlite3.c")
-        try:
-            ext.include_dirs = self._pkgconfig_include_dirs("sqlite3")
-            ext.library_dirs = self._pkgconfig_library_dirs("sqlite3")
-        except OSError:
-            pass # no pkg_config installed
+        if os.name == "nt":
+            ext.include_dirs = ["."]
+            ext.library_dirs = ["."]
+        else:
+            try:
+                ext.include_dirs = self._pkgconfig_include_dirs("sqlite3")
+                ext.library_dirs = self._pkgconfig_library_dirs("sqlite3")
+            except OSError:
+                pass # no pkg_config installed
         build_ext.build_extension(self, ext)
 
     def __setattr__(self, k, v):
