@@ -1,7 +1,7 @@
-#-*- coding: ISO-8859-1 -*-
+#-*- coding: utf-8 -*-
 # setup.py: the distutils script
 #
-# Copyright (C) 2004-2015 Gerhard Häring <gh@ghaering.de>
+# Copyright (C) 2004-2015 Gerhard HÃ¤ring <gh@ghaering.de>
 #
 # This file is part of pysqlite.
 #
